@@ -1,0 +1,206 @@
+
+
+.Symbols {
+	font-family: "Muli", "Questrial", sans;
+	font-size:18pt;
+	display:flex;
+	flex-wrap:wrap;
+	flex-direction:row-reverse;
+	align-items:flex-start;
+	align-content:flex-start;
+	flex-grow:2;
+/*	background-image:url("giphy.gif"); */
+	background-repeat: repeat;
+	background-size:800px 800px;
+	min-height:340px;
+	
+}
+.Symbol .guts {
+	font-size:10pt;
+	flex-grow:2;
+	position:relative;
+	border:2px solid gray;
+	max-height:10em;
+	max-width:7em;
+	min-height:0.5em;
+	overflow-y:scroll;
+	margin-bottom:10pt;
+	background-color:white;
+	padding: 2pt;
+}
+
+.Symbol.running .guts {
+	border-color:2px solid #080;
+	background-color:#dfd;
+}
+
+/* ========== SymFunc =========== */
+
+.Symbol {
+	display:flex;
+	flex-direction:column;
+	min-width:4em;
+	padding:2pt;
+}
+
+.Symbol .name {
+	margin:0;
+	padding:0;
+	font-weight:bold;
+	color:#004;
+}
+.Symbol .name:hover {
+	background-color:#ccf;
+	cursor:pointer;
+}
+
+.Symbol .lines {
+	flex-grow:2;
+	position:relative;
+	border:2px solid gray;
+	max-height:10em;
+	min-height:0.5em;
+	overflow-y:scroll;
+	margin-bottom:10pt;
+	background-color:white;
+}
+
+.Symbol .lines.focus {
+	border:2px solid blue;
+}
+
+/* ========== Token =========== */
+
+.Token {
+	display:inline-block;
+	color:black;
+	position:relative;
+	font-weight:normal;
+	text-decoration:inherit;
+}
+
+
+.TSym {
+	color: #008;
+}
+
+.TPos {
+	color: #808;
+}
+
+.TSym .TPos {
+	color: #008;
+	font-size:smaller;
+	font-weight:bold;
+	bottom:-3pt;
+	align-self:flex-end;
+}
+
+.TNeg {
+	color: #e0e;
+}
+
+.TSub {
+	color: #303;
+	font-weight:bold;
+}
+
+.TAdd, .TSub, .TEq, .TGt, .TLt, .TRet, .TSto, .TPush, .TPop, .TMul, .TDiv, .TMod {
+	font-weight:bold;
+}
+
+.TIf {
+	font-weight:bold;
+	margin-right:1em;
+}
+
+.Token.ready {
+	background-color:#cfc;
+}
+.Token.readyop {
+	background-color:#8f8;
+}
+
+.Token.strike {
+	text-decoration: line-through;
+
+}
+
+.Token.false {
+	background-color:#fdd;
+}
+.Token.true {
+	background-color:#dfd;
+}
+
+
+/* ========== CodeLine =========== */
+.CodeLine {
+	display:flex;
+	align-items:stretch;
+}
+
+.CodeLine.run .l {
+	background-color:#dfd;
+	color:#080;
+}
+
+.CodeLine .l {
+	display:flex;
+	justify-content:flex-end;
+	align-items:center;
+	background-color:#ddd;
+	width:1.5em;
+	padding-right:3pt;
+	margin-right:3pt;
+	color:#999;
+	font-weight:bold;
+	font-size:smaller;
+}
+
+.CodeLine.focus .l {
+	background-color:#aaa;
+	color:black;
+}
+
+.CodeLine.soft-error .l {
+	background-color:#faa;
+	color:black;
+}
+
+.CodeLine.soft-error.focus .l {
+	background-color:#a88;
+}
+
+.CodeLine.hard-error {
+	background-color:#fcc;
+}
+
+.CodeLine.run {
+}
+
+
+.CodeLine .caret {
+	font-weight:normal;
+	position:absolute;
+	display:inline-block;
+	-webkit-animation: 1s blink step-end infinite;
+}
+.CodeLine .caret div {
+	position:relative;
+	left:-3px;
+	top:-3px;
+}
+
+@-webkit-keyframes "blink" {
+  from, to {
+	color:black;
+  }
+  50% {
+	  color:transparent;
+	
+  }
+}
+
+
+

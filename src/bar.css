@@ -1,0 +1,27 @@
+
+.Bar {
+	display:flex;
+	justify-content:space-between;
+	height:1.5em;
+	line-height:1.5em;
+	width:100%;
+	background-color:#008;
+	color:white;
+	font-size:16pt;
+	font-weight:bold;
+	margin:0;
+	padding:0;
+}
+
+.Bar .Logo {
+	color:white;
+	text-decoration:none;
+}
+
+.Bar .Menu {
+	width:1.5em;
+}
+	
+	
+	
+

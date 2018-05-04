@@ -1,0 +1,34 @@
+.Levels {
+	padding: 3pt;
+}
+
+.Levels .lvl {
+	padding:2pt;
+	margin-right:2pt;
+	display:inline;
+	background-color:white;
+	border:1pt solid #008;
+}
+
+.Levels .lvl.cur {
+	border: 3pt solid #008;\
+}
+
+.Levels .lvl:hover {
+	cursor:pointer;
+	background-color:gray;
+}
+
+.Game {
+	float:right;
+}
+
+canvas {
+	border:1px solid black;
+	width:550px;
+	height: 340px;
+	margin:10pt;
+	position:relative;
+}
+
+

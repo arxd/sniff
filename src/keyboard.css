@@ -1,0 +1,31 @@
+.OSK {
+	clear:right;
+	position:relative;
+	max-width:500px;
+	border:1px solid black;
+	float:right;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.OSK .key {
+	background-color:white;
+	font-size:24pt;
+	display:inline-block;
+	width:16.66%;
+	height:1.5em;
+	line-height:1.5em;
+	text-align:center;
+	box-sizing: border-box;
+	border:1px solid black;
+}
+
+
+.OSK .key:hover {
+	cursor:pointer;
+	background-color:#eee;
+}
+.OSK .key:active {
+	background-color:#888;
+}

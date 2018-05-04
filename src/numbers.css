@@ -1,0 +1,65 @@
+
+.Robot {
+	float:right;
+	border:3pt solid blue;
+	
+}
+
+.map-area {
+	position:relative;
+}
+
+.Levels {
+	padding: 3pt;
+}
+
+.Levels .lvl {
+	padding:2pt;
+	margin-right:2pt;
+	display:inline;
+	background-color:white;
+	border:1pt solid #008;
+}
+
+.Levels .lvl.cur {
+	border: 3pt solid #008;\
+}
+
+.Levels .lvl:hover {
+	cursor:pointer;
+	background-color:gray;
+}
+
+.g0, .g1, .g2, .g3, .g4, .g5, .g6, .g7 {
+  background-image: url('grass.png');
+  background-repeat: no-repeat;
+  position:absolute;
+  height:105px; width:120px;
+}
+.g0 { background-position: 0px;}
+.g1 { background-position: -120px;}
+.g2 { background-position: -240px;}
+.g3 { background-position: -360px;}
+.g4 { background-position: -480px;}
+.g5 { background-position: -600px;}
+.g6 { background-position: -720px;}
+.g7 { background-position: -840px;}
+
+
+.r0, .r1, .r2, .r3, .r4, .r5, .r6, .r7 {
+	background-image: url('robot.png');
+	background-repeat:no-repeat;
+	position:absolute;
+	width:100px;
+	height:100px;
+	z-index:100;
+}
+.r0 {background-position: 0px;}
+.r1 {background-position: -100px;}
+.r2 {background-position: -200px;}
+.r3 {background-position: -300px;}
+.r4 {background-position: -400px;}
+.r5 {background-position: -500px;}
+.r6 {background-position: -600px;}
+.r7 {background-position: -700px;}
+

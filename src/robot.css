@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css?family=Muli|Questrial');
+
+body {
+	width:100%;
+	height:100%;
+	padding:0;
+	margin:0;
+}
+
+#robot-game {
+  background: url(robot-game.png) no-repeat;
+  width: 200px;
+  height: 150px;
+  display: inline-block;
+  margin:1em;
+  border: 2px solid black;
+}
+#draw-game {
+  background: url(draw-game.png) no-repeat;
+  width: 200px;
+  height: 150px;
+  display: inline-block;
+  margin:1em;
+  border: 2px solid black;
+}
+
+.hpan {
+	display:flex;
+	flex-wrap:wrap;
+	align-items:flex-start;
+}
+
+.vpan {
+	display:flex;
+	flex-direction:column;
+}
+
+
+#map-area {
+	position:relative;
+	/*border:3px solid blue;*/
+}
+
+#editor-area {
+	display:flex;
+}
+
+
+#comments {
+	width:1em;
+	height: 100%;
+	border:0;
+	color:red;
+	font-weight:bold;
+}
+
+#canvas {
+	border:1px solid black;
+	width: 400px;
+	height: 300px;
+}
+
+#editor {
+	display:none;
+}
+
+
+.editor .code div {
+	white-space: nowrap;
+}
+
+.editor.focus {
+	border:4px solid blue;
+}
+
+.editor {
+	border:1px solid black;
+	position:relative;
+	margin:3px;
+	padding:2px;
+}
+
+.editor .code .error {
+	color:red;
+}
+
+.editor .code .run {
+	color:black;
+	background-color:#ffa;
+	font-weight:bold;
+}
+.editor .code .recurse {
+	color:gray;
+	background-color:#faf;
+	font-weight:bold;
+}
+
+
+.editor .code:focus {
+	outline: 0px solid tranparent;
+}
+
+.editor .code {
+	font-size:18pt;
+	font-family: "Muli", "Questrial", sans;
+	border:1px solid blue;
+	width:4em;
+	height:8em;
+	
+	
+}
+.editor .code .caret {
+	font-size:20pt;
+	position:absolute;
+	-webkit-animation: 1s blink step-end infinite;
+}
+.editor .code .caret span {
+	position:relative;
+	left:-3px;
+	top:-7px;
+}
+
+@-webkit-keyframes "blink" {
+  from, to {
+	color:black;
+  }
+  50% {
+	  color:transparent;
+	
+  }
+}
+
+
+.editor .name {
+	font-size:20pt;
+	font-family: "Muli", "Questrial", sans;
+	margin:0;
+	padding:0;
+}
+
+
+
+#levels span {
+	border: 1px solid gray;
+	color: gray;
+	margin:5px;
+	padding:2px;
+	cursor:pointer;
+}
+#levels .current {
+	background-color:#ff8;
+}
+#levels span:hover {
+	border: 2px solid black;
+	color: black;
+	margin:4px;
+	padding:2px;
+}
+
+.speech_bubble {
+	width:10em;
+	background-color:white;
+	border:1px solid black;
+	border-radius:20px;
+	font-size:24pt;
+	font-family:Questrial, sans;
+	position:absolute;
+	top:-1em;
+	padding-left:1em;
+	display:none;
+}
+
+.g0, .g1, .g2, .g3, .g4, .g5, .g6, .g7 {
+  background-image: url('grass.png');
+  background-repeat: no-repeat;
+  position:absolute;
+  height:105px; width:120px;
+}
+.g0 { background-position: 0px;}
+.g1 { background-position: -120px;}
+.g2 { background-position: -240px;}
+.g3 { background-position: -360px;}
+.g4 { background-position: -480px;}
+.g5 { background-position: -600px;}
+.g6 { background-position: -720px;}
+.g7 { background-position: -840px;}
+
+
+.r0, .r1, .r2, .r3, .r4, .r5, .r6, .r7 {
+	background-image: url('robot.png');
+	background-repeat:no-repeat;
+	position:absolute;
+	width:100px;
+	height:100px;
+	z-index:100;
+}
+.r0 {background-position: 0px;}
+.r1 {background-position: -100px;}
+.r2 {background-position: -200px;}
+.r3 {background-position: -300px;}
+.r4 {background-position: -400px;}
+.r5 {background-position: -500px;}
+.r6 {background-position: -600px;}
+.r7 {background-position: -700px;}
+
+
+

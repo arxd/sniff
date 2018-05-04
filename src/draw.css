@@ -1,0 +1,8 @@
+.Canvas {
+	border:1px solid black;
+	width:550px;
+	height: 340px;
+	float:right;
+	position:relative;
+	margin:10pt;
+}

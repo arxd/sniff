@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="About Sniff">
+<meta name="keywords" content="programming, language, sniff, about">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About: Sniff</title>
+<style>
+
+body {
+	margin:0;
+	padding:0;
+	font-family: "Questrial", sans;
+	/*font-family:SourceSansProRegular, Arial, sans-serif;*/
+
+}
+
+.game {
+  width: 200px;
+  height: 150px;
+  margin:1em;
+  border: 2px solid black;
+  display: inline-block;
+}
+
+.section {
+	margin:0;
+	padding:1em;
+	width:100%;
+}
+
+.section.header {
+	background-color:#008;
+}
+
+.section.header a {
+	color:white;
+	font-size:36pt;
+	font-weight:bold;
+	margin:0;
+	text-decoration:none;
+
+}
+
+.section.games {
+
+}
+
+.section.about {
+	background-color:#dde;
+
+}
+
+</style>
+
+<style>
+a {color:black;}
+a:visited {color:black;}
+
+code {
+	font-family:Questral;
+	display:inline-block;
+	border:1px solid gray;
+	background-color:#eee;
+	padding:1pt;
+}
+.ex {
+	margin-top:1em;
+	margin-bottom:1em;
+	margin-left:3em;
+	display:inline-block;
+	border: 1px solid black;
+}
+.ex .title {
+	padding:3pt;
+	font-weight:bold;
+	border-bottom:1px solid black;
+	background-color:#fe8;
+}
+.ex .body {
+	padding:3pt;
+}
+.code {font-style:normal;position:relative;font-family:Questral,sans;}
+.code.single {background-color:#eee;}
+.code.multi {border:2pt solid gray;display:block;font-style:normal;padding-right:5pt;}
+.code .if {color:black; font-weight:bold;  margin-right:1em;}
+.code .sym {color: #008;}
+.code .pos {color: #808;}
+.code .neg {color: #e0e;}
+.code .op {color:black;font-weight:bold;}
+.code .neg {color: #e0e;}
+.code .index{position:relative; color: #008; font-size:smaller; font-weight:bold; bottom:-3pt; align-self:flex-end;}
+
+.prog {margin-left:3em;display:inline-block;font-family:Questral,sans;}
+.prog>b {color: #008;clear:right;}
+.code.multi>div {display:flex;}
+.code.multi>div>b {
+	display:inline-block;
+	text-align:right;
+	background-color:#ddd;
+	width:1.5em;
+	padding-right:3pt;
+	margin-right:3pt;
+	color:#999;
+	font-weight:bold;
+	font-size:smaller;
+}
+
+</style>
+<link rel="stylesheet" type="text/css" href="bar.css">
+</head>
+<body>
+<div class="section header">
+<a href="/">Sniff</a>
+</div>
+
+<div class="section interface">
+<h1>About the Interface</h1>
+<p>You interact with the different games by writing <a href="#programs">programs</a> as described in the next section.  Some programs are builtin for a specific game.  These builtin programs are visible just like any other program, but they cannot be deleted or edited.  Calling them has some game-specific utility, such as <i>move</i> or <i>turn</i>.</p>
+
+<h2>Run / Edit mode</h2>
+<p>After writing some code, you want to execute your code to see what it does.  Execute your program with the <em>&lt;TAB&gt;</em> key.  This will put you into a running mode and start executing the <i>main</i> program.</p>
+<p>The game is always in one of two modes: Run, or Edit.</p>
+<p>When you are in RUN mode your code is being executed.  You can tell you are in RUN mode because there are turning gears in the background.  You can not change any code while executing.</p>
+<p>Pushing the <em>&lt;TAB&gt;</em> key executes the currently highlighted (green) line and then advances to the next line.  This way you can step through your code.  If you hold down the <em>&lt;TAB&gt;</em> key then it will run quickly.  
+<p>At any time you can push the <em>&lt;ESC&gt;</em> key to quit RUN mode and enter EDIT mode.  The gears stop turning and you can edit your programs.  The last state of the game is preserved so that you can see what happened, but when you run again it will reset to the beginning.</p>
+<p>If you push <em>&lt;ESC&gt;</em> while in EDIT mode the game is reset to its (possibly random) initial state.</p>
+</div>
+
+
+
+
+<div class="section language">
+<h1>About the Language</h1>
+<p>
+	The Sniff programming language is very low level.
+	It does not have objects and classes found in high level languages like JavaScript or Python.
+	It is very similar to assembly languages, and therefore reflects more accurately how a CPU actually 'thinks'.
+</p>
+<p>
+	Computers manipulate numbers.  Not pictures, not words, only numbers.  The Sniff language manipulates integers only.  
+	To talk about different things, like colors or pictures, somewhat arbitrary numbers are used to represent them.
+	That mapping of numbers to 'real' things is called coding.  
+	The number <i>65</i> means the letter 'A', 
+	number <i>2</i> is the color red, <i>0</i> means 'no' or 'false', etc... 
+</p>
+
+<h2 id="programs">Programs</h2>
+<p>
+	An Sniff program is a list of <a href="#expr">expressions</a>.
+	Each program has a name composed of alphabetic letters and the underscore.
+	It would normally be called a function in other programming languages, but it doesn't take
+	any arguments like a function does.  A program can be considered as a function that takes no arguments, and returns an integer.
+</p>
+<p>
+	You invoke a program with it's name <i>bob</i>, 
+	or as part of an expression <i>bob + 42</i>.
+</p>
+<p><a id="index_prog"></a>
+	Also, unlike normal functions, execution can begin from an arbitrary line by adding an integer to the end
+	of the name.  <i>bob 42</i> would start executing the program bob from line 42.  This is called indexing.
+	If you don't supply an index then execution starts from the top.  <i>bob 0</i> and <i>bob</i>
+	are identical.
+</p>
+<p>
+	This indexing feature can be used to <a href="#jump">jump</a> to arbitrary lines in a program (the dreaded goto), 
+	index <a href="#index_array">arrays</a> of data, or create <a href="#local_vars">local variables</a>.
+</p>
+<p>
+	Sniff does not have runtime errors.  So if you jump to a line past the end of the program <i>bob 10000</i> it will just 
+	return a <a href="#rand_return">random integer</a>.
+</p>
+<h2 id="expr">Expressions</h2>
+<p>
+	Every Sniff program consists of a list of expressions, one per line.
+	There are only a few kinds of expressions:
+</p>
+<ul>
+<li>Arithmetic Expressions <i>+ – &lt; &gt; =</i></li>
+<li>Store / Return <i>→←</i></li>
+<li>Push / Pop  <i>↓↑</i></li>
+<li>Conditional <i>?</i></li>
+</ul>
+
+
+<h3>Arithmetic Expression</h3>
+<p>
+	Arithmetic expressions can use five different operators: <i> + – &lt; &gt; =</i>.
+	To keep expressions simple there are no parenthesis.  The operator priority from highest to lowest is: 
+	<i>+ –</i>, <i>&lt; &gt;</i>, <i>=</i>.
+	The comparison operators <i>&lt; &gt; =</i> return <i>0</i> for false and <i>1</i> for true.  
+</p>
+<p>
+	For example:
+</p>
+<p>
+	<i>42 + -2 – -10</i> evaluates to <i>50</i>,
+</p>
+<p>
+	<i>3 &gt; 1 = 2 – 1</i> evaluates to <i>1</i>
+</p>
+<h3><a id="return">Return</a> Expression</h3>
+<p id="rand_return">
+	Sniff programs always return an integer to their caller.  A value can be explicitly returned with the left arrow syntax. 
+	<i>← 40 + 2</i> returns 42 and stops further execution of this program.  If the program reaches the end without an
+	explicit return expression, then it returns a random integer (0–9999), meaning, I don't know what to return.
+</p>
+<p id="variable">
+	Most programming languages have variables.  Sniff doesn't have specialized variables.
+	It has only programs.  But a program is a list of data, so a program can act like a variable holding a single value, or
+	even a variable holding multiple values (array).  So if you have a program <i>bob</i>:
+</p>
+	<div class="prog"><b>bob</b>
+		<i>/ ← 42</i>
+	</div>
+<p>
+	then any invocation to bob will always return <i>42</i>.  So, <i>bob + bob</i> will evaluate to <i>84</i>.
+	This is similar to a variable holding a single integer.
+</p>
+<p id="index_array">
+	If bob is a list of return statements:
+</p>
+	<div class="prog"><b>bob</b>
+		<i>/ ← 42 / ← 10+10 / 1 > 3 ? ← 100 / ← -100</i>
+	</div>
+<p>
+	This represents a semi-conventional array.  You can retrieve elements with <a href="#index_prog">program indexing</a>.  
+	Therefore, <i>bob 0 + bob 1</i> evaluates to <i>62</i>.  It is, however, still a program, 
+	so <i>bob 1</i> can evaluate the expression <i>10 + 10</i> first,
+	and <i>bob 2</i> falls through and returns <i>-100</i>.
+</p>
+
+<h3 id="store">Store Expression</h3>
+<p>
+	You modify the content of programs in two specific ways, store <i>→</i> and <a href="#push">push</a> <i>↓</i>. 
+	The store expression <i>42 + 10 → bob</i> replaces the first line of <i>bob</i> with a return statement <i>← 52</i>.
+	This effectively turns bob into a <a href="#variable">variable</a> that equals <i>52</i>.
+</p>
+<p>
+	Using <a href="#index_prog">program indexing</a>, you can store to arbitrary lines of the program. 
+	<i>-42 → bob 1</i> stores <i>-42</i> to line 1 of <i>bob</i>.  In order to avoid runtime errors, storing
+	past the end of the program <i>42 → bob 1000</i> will create 1000 blank lines and store 42 on line 1000.
+</p>
+
+<h3 id="push">Push and Pop Expression</h3>
+<p>
+	A very important programming strategy is pushing and popping to a stack.  A stack is a normal array of integers that can grow
+	and shrink from one end.  Pushing is similar to <a href="#store">storing</a> except that it inserts a new line which pushes
+	the other lines down.  Consider a program <i>stack</i>:
+</p>
+	<div class="prog"><b>stack</b>
+		<i>/ ↑ 42 / ↑ 100 / ↑ 200</i>
+	</div>
+<p>
+	If you use a push expression <i>0 ↓ stack</i> then <i>↑ 0</i> will be inserted before <i>↑ 42</i>.  You can also insert
+	to arbitrary lines using <a href="#index_prog">program indexing</a>.  <i>0 ↓ stack 2</i> would insert <i>↑ 0</i> before
+	the <i>↑ 200</i>.
+</p>
+<p>
+	Notice that <a href="#store">store</a> <i>42 → bob</i> expressions generate <a href="#return">return</a> <i>← 42</i>
+	expressions.  Push <i>42 ↓ bob</i> expressions generate <em>pop</em> <i>↑ 42</i>.  A pop is similar to a return, but it removes itself
+	from the program and then returns the value.  So, after evaluating <i>stack + stack</i>, it would look like this:
+</p>
+	<div class="prog"><b>stack</b>
+		<i>/ ↑ 200</i>
+	</div>
+
+<h3>If Expressions</h3>
+<p>
+	Conditional execution of code is essential for a programming language.  Sniff has the most elementary expression <i>bob ? cob</i> 
+	that is similar to assembly language conditionals.
+	The expression left of the <i>?</i> is evaluated first.  If it evaluates to the integer <i>0</i>, which means <em>false</em>, then 
+	the right side is skipped and execution continues to the next line.  If the left-hand expression returns any positive or negative integer
+	then that is considered <em>true</em>, in which case the right expression <i>cob</i> is evaluated.
+</p>
+<p>
+	<i>isa_rabbit + isa_cat ? pet_it</i>  The <i>+</i> operator creates an <em>or</em> condition.  
+</p>
+<h2 id="jump">Example Programs</h2>
+<p>
+	Consider this program:
+</p>
+	<div class="prog"><b>count</b>
+		<i>/ count 2 + 1 → count 2 / count / ← 0</i>
+	</div>
+<p id="local_vars">
+	This program demonstrates the use of a 'local variable'.  
+	By using some lines somewhere else in the program you can avoid creating new program to hold the counting variable.
+</p>
+<p>
+	It also demonstrates an infinite loop using recursion.  When a program is called like <i>count 2</i> or <i>count</i>, a little bit
+	of memory is used to remember where to come back to after the program finishes (the internal call stack).  In this program, 
+	calls to <i>count 2</i> return, but calls to <i>count</i> will never return.  <i>count</i> will be called more and more times.
+	This will eventually exhaust the memory of the system.
+</p>
+<p>
+	Using a trick called tail-call optimization,  we can change line 1 of the previous program to <i>← count</i>.
+	That very specific syntax let's the computer know that there is nothing to do after executing <i>count</i>.
+	It is the <em>tail</em> of the program.  Therefore, we don't need to remember where we are, and we can jump straight
+	to line 0 without any memory being used.
+</p>
+<p>
+	In order to use tail-call optimization or 'jumps', you must return only a program.  For example, this program counts down from infinity ;)
+</p>
+	<div class="prog"><b>count_down</b>
+		<i>/ ← count_down – 1</i>
+	</div>
+<p>
+	Since there is still stuff to do after <i>count</i> is called, <i>– 1</i>, the computer has to use the call stack.
+	Sort of like remembering all the numbers up to infinity so that later it can count back down again.  Obviously (to us), it never
+	gets to the <i>– 1</i> section.  But, the computer tries it's best, until it runs out of memory.
+</p>
+
+<h4>Conclusion</h4>
+<p>
+	And that is all there is to it.  With a language this simple, everything that happens is very concrete and obvious.  There is
+	no magic.  Higher level constructions such as looping or call arguments must be learned or discovered by yourself.
+</p>
+</div>
+
+<script>
+codes = document.getElementsByTagName("i");
+console.log(codes);
+for (var i =0; i < codes.length; ++i) {
+	var cd = codes[i];
+	var multi = (cd.innerHTML.indexOf("/")>=0);
+	var inners = cd.innerHTML.split(' ');
+	while(cd.firstChild)
+		cd.removeChild(cd.firstChild);
+	cd.className = "code "+ (multi?"multi":"single");
+	var cur_line = cd;
+	var lineno=0;
+	for (var j = 0; j < inners.length; ++j) {
+		if (inners[j] == "/") {
+			cur_line = document.createElement("div");
+			var lino = document.createElement("b");
+			lino.innerHTML = lineno++;
+			cur_line.append(lino);
+			cd.append(cur_line);
+			continue;
+		}
+		var tok = document.createElement("span");
+		if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(inners[j][0]) >=0 ) {
+			tok.className = "sym";
+		} else if ("+=–<>↓↑←→".indexOf(inners[j]) >= 0) {
+			tok.className = "op";
+		} else if (inners[j][0] == '-') {
+			tok.className = "neg";
+		} else if ("0123456789".indexOf(inners[j][0]) >= 0 ) {
+			if (cur_line.lastChild && cur_line.lastChild.className == "sym")
+				tok.className = "index";
+			else
+				tok.className = "pos";
+		} else if (inners[j] == "?") {
+			tok.className = "if";
+		}
+		tok.innerHTML = inners[j];
+		cur_line.appendChild(tok);
+	}
+}
+</script>
+</body>
+</html>
